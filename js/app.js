@@ -26,15 +26,15 @@ $(document).ready(function(){
 	//}
 	//dropObstacle();
 
-	$(document).keydown(function(e){
-		if (e.which === 37) {
-			console.log('left');
-			$(plane).css('margin-right', '10%');
-		} else if (e.which === 39) {
+	$(document).keydown(['#plane-icon'],function(event){
+		if (event.which === 39) {
 			console.log('right');
-			$(plane).css('margin-left', '10%');
+			$('#plane-icon').css('margin-right', '40%');
+		} else if (event.which === 37) {
+			console.log('left');
+			$('#plane-icon').css('margin-left', '40%');
 		} else {
-			e.preventDefault();
+			event.preventDefault();
 		}
 
 	})
