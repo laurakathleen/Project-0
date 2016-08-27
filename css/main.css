@@ -1,3 +1,13 @@
-#plane-icon {
-	margin-left: 50%;
+.game-board {
+	width: 500px;
+	height: 300px;
+	border: 1px solid black;
+	margin: 0 auto;
+	position: relative;
+}
+
+.plane-icon {
+	position: absolute;
+	margin-left: 250px;
+	margin-top: 250px;
 }

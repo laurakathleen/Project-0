@@ -1,6 +1,6 @@
 var x = $('#x');
 var o =  $('#o');
-var plane = $('.plane-icon');
+var $plane = $('.plane-icon');
 //constructor for all types of tokens- Obstacles & Boosts:
 function Token(option) {
 		this.symbol = option.symbol;
@@ -12,31 +12,36 @@ var boost = new Token({symbol: '<p>O</p>'});
 $(document).ready(function(){
 	//test to make sure file is working:
 	console.log("Sanity check!");
-
+	
+	//set interval so that every second, an obstacle is dropped:
+	//window.setInterval(1000);
+	
 	//function to literally drop the obstacle: (set to start on btn click for now)
 	//$('.drop-obstacle-btn').on('click', dropObstacle(){
-		//set interval so that every second, an obstacle is dropped:
-		//window.setInterval(1000);
+
 	//})
 
 	//define dropObstacle function
-	//function dropObstacle(){
-	//	x.slideDown('slow');
-	//	window.setInterval(1000);
-	//}
-	//dropObstacle();
+	function dropObstacle(){
+		x.slideDown('slow');
+		window.setInterval(1000);
+	}
+	dropObstacle();
 
-	$(document).keydown(['#plane-icon'],function(event){
-		if (event.which === 39) {
+	$("body").keydown(function(e){
+		if (e.which === 39) {
+			//move right
 			console.log('right');
-			$('#plane-icon').css('margin-right', '40%');
-		} else if (event.which === 37) {
+			$('.plane-icon').each(function() {
+   		 		$(this).css({ left: $(this).position().left + 10 });
+			});
+		} else if (e.which === 37) {
+			//move left
 			console.log('left');
-			$('#plane-icon').css('margin-left', '40%');
-		} else {
-			event.preventDefault();
+			$('.plane-icon').each(function() {
+    			$(this).css({ left: $(this).position().left - 10 });
+			});
 		}
-
 	})
 
 })
