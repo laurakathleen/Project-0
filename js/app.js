@@ -33,13 +33,27 @@ $(document).ready(function(){
 			//move right
 			console.log('right');
 			$('.plane-icon').each(function() {
-   		 		$(this).css({ left: $(this).position().left + 10 });
+				//get position of the plane
+				var planeRPosition = $('.plane-icon').position();
+				var planeRight = $('.plane-icon').position().left;
+				//if the position of the plane is less than or equal to 220px on the right (parent div width), keep moving; else stop movement
+				if (planeRight <= 220) {
+	   		 		$(this).css({ left: $(this).position().left + 10 });
+	   		 		planeRPosition + 10;
+   		 		}
 			});
 		} else if (e.which === 37) {
 			//move left
 			console.log('left');
 			$('.plane-icon').each(function() {
+				//get position of plane
+				var planeLPosition = $('.plane-icon').position();
+				var planeLeft = $('.plane-icon').position().left;
+				//if the position of the plane is greater than or equal to -240px on the left (parent div width), keep moving; else stop movement
+				if (planeLeft >= -240) {
     			$(this).css({ left: $(this).position().left - 10 });
+    				planeLPosition - 10;
+	   		 	}
 			});
 		}
 	})
