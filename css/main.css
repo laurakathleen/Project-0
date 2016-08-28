@@ -11,3 +11,20 @@
 	margin-left: 250px;
 	margin-top: 250px;
 }
+
+.obstacle-icon {
+	width: 50px;
+	height: auto;
+	position: relative;
+}
+
+.obstacle-icon-grow {
+	width: 75px;
+	height: auto;
+}
+
+.boost-icon {
+	width: 25px;
+	height: auto;
+	position: relative;
+}
