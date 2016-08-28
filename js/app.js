@@ -3,6 +3,7 @@ var start = document.getElementsByClassName('start-btn');
 var obstacle = document.getElementsByClassName('obstacle-icon');
 var boost = document.getElementsByClassName('boost-icon');
 var gameBoard = document.getElementsByClassName('game-board');
+var img = new Image();
 var tokePosition;
 
 $(document).ready(function(){
@@ -45,8 +46,14 @@ $(document).ready(function(){
 		tokenPosition = Math.floor(Math.random() * 20);
 		console.log("when i rolled the dice, i got: " + tokenPosition);
 		if (tokenPosition % 2 == 0){
+			obstacle = $(img).attr('src', '' + 'Img/danger.jpg').appendTo($(gameBoard)).slideDown('slow');
+			$(obstacle).css('width', '50px');
+			$(obstacle).css('height', 'auto');
 			getTokenStartPos(obstacle);
 		} else {
+			boost = $(img).attr('src', '' + 'Img/boost.png').appendTo($(gameBoard)).slideDown('slow');			
+			$(boost).css('width', '25px');
+			$(boost).css('height', 'auto');
 			getTokenStartPos(boost);
 		}
 	}
