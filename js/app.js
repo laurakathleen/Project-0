@@ -18,7 +18,7 @@ $(document).ready(function(){
 				var planeRPos = $(plane).position();
 				var planeRight = $(plane).position().left;
 				//if the position of the plane is less than or equal to 220px on the right (parent div width), keep moving; else stop movement
-				if (planeRight <= 220) {
+				if (planeRight <= 200) {
 	   		 		$(this).css({ left: $(this).position().left + 10 });
 	   		 		planeRPos + 10;
    		 		}
