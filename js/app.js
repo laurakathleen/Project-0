@@ -11,7 +11,7 @@ var tokensDropped = 0;
 var counter = 0;
 
 $(document).ready(function(){
-	console.log("This is the correct file- sanity check");
+	console.log("Sanity check");
 
 		$("body").keydown(function(e){
 		if (e.which === 68) {
@@ -24,8 +24,8 @@ $(document).ready(function(){
 				console.log(player1RPos);
 				//if the position of the plane is less than or equal to 220px on the right (parent div width), keep moving; else stop movement
 				if (player1Right < 805) {
-	   		 		$(this).css({ left: $(this).position().left + 5 });
-	   		 		player1RPos + 5;
+	   		 		$(this).css({ left: $(this).position().left + 10 });
+	   		 		player1RPos + 10;
    		 		}
 			});
 		}
@@ -42,8 +42,8 @@ $(document).ready(function(){
 				console.log(player2Right);
 				//if the position of the plane is less than or equal to 220px on the right (parent div width), keep moving; else stop movement
 				if (player2Right < 805) {
-	   		 		$(this).css({ left: $(this).position().left + 5 });
-	   		 		player2RPos + 5;
+	   		 		$(this).css({ left: $(this).position().left + 10 });
+	   		 		player2RPos + 10;
    		 		}
 			});
 		}
