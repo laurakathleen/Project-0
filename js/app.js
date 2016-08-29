@@ -6,6 +6,7 @@ var gameBoard = document.getElementsByClassName('game-board');
 var img = new Image();
 var tokePosition;
 var tokensDropped = 0;
+var counter = 0;
 
 $(document).ready(function(){
 	//test to make sure file is working:
@@ -43,10 +44,7 @@ $(document).ready(function(){
 	/***********END OF PLANE MOVEMENT**************/
 
 	//rollTheDice to see if an obstacle or a boost will drop:
-	function rollTheDice(){
-		setTimeout(rollTheDice, 3000);
-		tokensDropped++;
-		console.log(tokensDropped);
+	function rollTheDice(){		
 		tokenPosition = Math.floor(Math.random() * 20);
 		if (tokenPosition % 2 == 0){
 			obstacle = $(img).attr('src', '' + 'Img/danger.jpg').appendTo($(gameBoard)).slideDown('slow');
@@ -88,28 +86,11 @@ $(document).ready(function(){
 		if (positionOfToken > 0 && positionOfToken < 260){
 			setInterval(function(){
 				$(token).css({ top: $(token).position().top + 10});
-			}, 100);
-			return positionOfToken;
-		} else if (positionOfToken === $(plane).position().top){
-				$(token).css('width', '100px');
-				checkCollision(token);
-		} else if (positionOfToken == '100px'){
-			$(token).css('width', '100px');
-			$(token).clone();
-			$(token).remove();
-			setInterval(function(){
-				$(token).clone();
-				rollTheDice();
-			}, 3000);
-		}
+				}, 200);
+				return positionOfToken;
+			}
 	}
 
-
-	//have setInterval call the rollTheDice function:
-	// var refreshId = setInterval(function() {}, 3000);
-
-	// function test() {}
-	// var refreshId = setInterval("test()", 5000);
 
 	//clicking the start button triggers rollTheDice and starts the timer:
 	$(start).on('click', function startIt(){
@@ -126,3 +107,4 @@ $(document).ready(function(){
 		}
 	}
 })
+
