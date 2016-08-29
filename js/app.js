@@ -5,6 +5,7 @@ var boost = document.getElementsByClassName('boost-icon');
 var gameBoard = document.getElementsByClassName('game-board');
 var img = new Image();
 var tokePosition;
+var tokensDropped = 0;
 
 $(document).ready(function(){
 	//test to make sure file is working:
@@ -43,17 +44,21 @@ $(document).ready(function(){
 
 	//rollTheDice to see if an obstacle or a boost will drop:
 	function rollTheDice(){
+		setTimeout(rollTheDice, 3000);
+		tokensDropped++;
+		console.log(tokensDropped);
 		tokenPosition = Math.floor(Math.random() * 20);
-		console.log("when i rolled the dice, i got: " + tokenPosition);
 		if (tokenPosition % 2 == 0){
 			obstacle = $(img).attr('src', '' + 'Img/danger.jpg').appendTo($(gameBoard)).slideDown('slow');
 			$(obstacle).attr('class', 'obstacle-icon');			
+			$(obstacle).css('top', '0px');
 			$(obstacle).css('width', '50px');
 			$(obstacle).css('height', 'auto');
 			getTokenStartPos(obstacle);
 		} else {
 			boost = $(img).attr('src', '' + 'Img/boost.png').appendTo($(gameBoard)).slideDown('slow');			
 			$(boost).attr('class', 'boost-icon');
+			$(boost).css('top', '0px');
 			$(boost).css('width', '25px');
 			$(boost).css('height', 'auto');
 			getTokenStartPos(boost);
@@ -63,7 +68,6 @@ $(document).ready(function(){
 	//getTokenStartPos to figure where to drop the obstacle/boost:
 	function getTokenStartPos(token){
 		var tokenPos = Math.floor(Math.random() * 20);
-		console.log("When getTokenStart ran, I got: " + tokenPos);
 		if (tokenPos <= 5){
 			$(token).css('margin-left', '90px');
 		} else if (tokenPos > 5 && tokenPos <= 10){
@@ -75,31 +79,39 @@ $(document).ready(function(){
 		} else {
 			$(token).css('margin-left', '440px');
 		}
-		console.log(token);
 		dropIt(token);
 	}
 
+	//dropIt actually drops either an obstacle or boost:
 	function dropIt(token){
-		var positionOfToken = $(token).position().top;
+		var positionOfToken = token.position().top;
 		if (positionOfToken > 0 && positionOfToken < 260){
 			setInterval(function(){
-				$(token).css({ top: $(token).position().top + 10}, 200);
-			}, 200);
-		} else if (positionOfToken >= 330){
-			$(token).css('visibility', 'hidden');
-			rollTheDice();
+				$(token).css({ top: $(token).position().top + 10});
+			}, 100);
+			return positionOfToken;
+		} else if (positionOfToken === $(plane).position().top){
+				$(token).css('width', '100px');
+				checkCollision(token);
+		} else if (positionOfToken == '100px'){
+			$(token).css('width', '100px');
+			$(token).clone();
+			$(token).remove();
+			setInterval(function(){
+				$(token).clone();
+				rollTheDice();
+			}, 3000);
 		}
 	}
 
-	// function dropping(token){
-	// 	$(token).css({ top: $(token).position().top + 10}, 200);
-	// 	console.log("Dropping!");
-	// }
 
+	//have setInterval call the rollTheDice function:
+	// var refreshId = setInterval(function() {}, 3000);
 
-	
+	// function test() {}
+	// var refreshId = setInterval("test()", 5000);
 
-	//clicking the start button triggers rollTheDice:
+	//clicking the start button triggers rollTheDice and starts the timer:
 	$(start).on('click', function startIt(){
 		var start = new Date;
 		setInterval(function() {
@@ -108,6 +120,9 @@ $(document).ready(function(){
 		rollTheDice();
 	})
 
-
-
+	function checkCollision(token){
+		if ($(plane).position.left == $(token).position.left){
+			console.log("COLLISION!!!!!");
+		}
+	}
 })

@@ -1,6 +1,6 @@
 .game-board {
 	width: 500px;
-	height: 300px;
+	height: 500px;
 	border: 1px solid black;
 	margin: 0 auto;
 	position: relative;
@@ -9,7 +9,7 @@
 .plane-icon {
 	position: absolute;
 	margin-left: 250px;
-	margin-top: 250px;
+	margin-top: 450px;
 	font-size: 35px;
 }
 
