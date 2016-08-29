@@ -3,7 +3,7 @@ Creator: <Name>
 Location: SF
 -->
 
-![](Img/wireframe.JPG)
+<img src="Img/wireframe.JPG">
 
 #Model a Race Game with OOP
 
