@@ -1,6 +1,6 @@
 var plane = document.getElementsByClassName('plane-icon');
 var start = document.getElementsByClassName('start-btn');
-var obstacle = document.getElementsByClassName('obstacle-icon');
+var obstacle = document.getElementsByClassName('obstacle-icon');;
 var boost = document.getElementsByClassName('boost-icon');
 var gameBoard = document.getElementsByClassName('game-board');
 var img = new Image();
@@ -47,11 +47,13 @@ $(document).ready(function(){
 		console.log("when i rolled the dice, i got: " + tokenPosition);
 		if (tokenPosition % 2 == 0){
 			obstacle = $(img).attr('src', '' + 'Img/danger.jpg').appendTo($(gameBoard)).slideDown('slow');
+			$(obstacle).attr('class', 'obstacle-icon');			
 			$(obstacle).css('width', '50px');
 			$(obstacle).css('height', 'auto');
 			getTokenStartPos(obstacle);
 		} else {
 			boost = $(img).attr('src', '' + 'Img/boost.png').appendTo($(gameBoard)).slideDown('slow');			
+			$(boost).attr('class', 'boost-icon');
 			$(boost).css('width', '25px');
 			$(boost).css('height', 'auto');
 			getTokenStartPos(boost);
@@ -78,11 +80,12 @@ $(document).ready(function(){
 	}
 
 	function dropIt(token){
-		window.setInterval(200);
 		var positionOfToken = $(token).position().top;
 		console.log("When I got to dropIt: " + positionOfToken);
 		if (positionOfToken > 0 && positionOfToken < 260){
-			$(token).css({ top: $(token).position().top + 10}, 200);
+			setInterval(function(){
+				$(token).css({ top: $(token).position().top + 10}, 200);
+			}, 200);
 		} else if (positionOfToken >= 260){
 			rollTheDice();
 		}
