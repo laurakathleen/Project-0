@@ -4,6 +4,7 @@ Location: SF
 -->
 
 <img src="Img/wireframe.JPG">
+<a href="https://github.com/laurakathleen/Project-0">Check out my game on GitHub</a>
 
 #Model a Race Game with OOP
 
