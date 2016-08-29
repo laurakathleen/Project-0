@@ -19,8 +19,8 @@ $(document).ready(function(){
 			//move right
 			$('#player1').each(function() {
 				//get position of the plane
-				var player1RPos = $('#player1').position();
-				var player1Right = $('#player1').position().left;
+				var player1RPos = $('#player1').position(),
+				player1Right = $('#player1').position().left;
 				console.log(player1RPos);
 				//if the position of the plane is less than or equal to 220px on the right (parent div width), keep moving; else stop movement
 				if (player1Right < 805) {
@@ -35,10 +35,10 @@ $(document).ready(function(){
 		if (e.which === 76) {
 			console.log("keydown player 2");
 			//move right
-			$(player2).each(function() {
+			$('#player2').each(function() {
 				//get position of the plane
-				var player2RPos = $(player2).position();
-				var player2Right = $(player2).position().left;
+				var player2RPos = $('#player2').position();
+				var player2Right = $('#player2').position().left;
 				console.log(player2Right);
 				//if the position of the plane is less than or equal to 220px on the right (parent div width), keep moving; else stop movement
 				if (player2Right < 805) {
