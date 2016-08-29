@@ -81,12 +81,12 @@ $(document).ready(function(){
 
 	function dropIt(token){
 		var positionOfToken = $(token).position().top;
-		console.log("When I got to dropIt: " + positionOfToken);
 		if (positionOfToken > 0 && positionOfToken < 260){
 			setInterval(function(){
 				$(token).css({ top: $(token).position().top + 10}, 200);
 			}, 200);
-		} else if (positionOfToken >= 260){
+		} else if (positionOfToken >= 330){
+			$(token).css('visibility', 'hidden');
 			rollTheDice();
 		}
 	}
@@ -96,10 +96,18 @@ $(document).ready(function(){
 	// 	console.log("Dropping!");
 	// }
 
+
+	
+
 	//clicking the start button triggers rollTheDice:
 	$(start).on('click', function startIt(){
+		var start = new Date;
+		setInterval(function() {
+    		$('.Timer').text((new Date - start) / 1000 + " Seconds");
+	}, 1000);
 		rollTheDice();
 	})
+
 
 
 })

@@ -19,13 +19,12 @@
 	position: relative;
 }
 
-.obstacle-icon-grow {
-	width: 75px;
-	height: auto;
-}
-
 .boost-icon {
 	width: 25px;
 	height: auto;
 	position: relative;
+}
+
+.Timer {
+	text-align: center;
 }
