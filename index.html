@@ -15,11 +15,17 @@
 	    <script src="js/app.js"></script>
 	</head>
 	<body>
-		<div class = "game-board">
-			<button type="button " class="btn btn-default start-btn">Press to start</button>
-			<span class="glyphicon glyphicon-plane plane-icon" aria-hidden="true"></span>
+		<div class="background">
+		<img id="background" src="Img/ship-cockpit.png">
+			<div class = "game-board">
+				<div class="header">
+					<h4>Player 1 (red) d=right.</h4>
+					<h4>Player 2 (blue) >=right.</h4>
+				</div>
+				<span class="glyphicon glyphicon-plane plane-icon" id="player1" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-plane plane-icon" id="player2" aria-hidden="true"></span><br>
+				<div class="Timer"></div>
+			</div>
 		</div>
-		<br>
-		<div class="Timer"></div>
 	</body>
 </html>
